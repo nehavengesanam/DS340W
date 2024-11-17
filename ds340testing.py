@@ -12,7 +12,8 @@ Original file is located at
 import pandas as pd
 import torch
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
-from sklearn.metrics import accuracy_score, roc_auc_score
+from sklearn.metrics import precision_score, recall_score, f1_score, confusion_matrix, ConfusionMatrixDisplay
+import matplotlib.pyplot as plt
 
 # Load dataset
 df = pd.read_csv("340dataset.csv")
@@ -26,7 +27,7 @@ print(f"Total samples: {len(df)}")
 print(f"Short text samples: {len(short_texts)}")
 print(f"Long text samples: {len(long_texts)}")
 
-# Load the tokenizer and model from Hugging Face
+# Loading tokenizer and model
 model_name = "roberta-base-openai-detector"  # Publicly accessible model for AI detection
 tokenizer = AutoTokenizer.from_pretrained(model_name)
 model = AutoModelForSequenceClassification.from_pretrained(model_name)
@@ -81,3 +82,47 @@ long_auroc = roc_auc_score(long_df['true_label'], long_df['probability'])
 
 print(f"Short Text Accuracy: {short_accuracy:.2f}, AUROC: {short_auroc:.2f}")
 print(f"Long Text Accuracy: {long_accuracy:.2f}, AUROC: {long_auroc:.2f}")
+
+def calculate_metrics_with_confusion_matrix(df):
+    results = []
+    for text in df['text']:
+        prediction, prob = detect_ai_generated(text)
+        results.append({
+            'text': text,
+            'true_label': df[df['text'] == text]['true_label'].values[0],
+            'predicted_label': 1 if prediction == "AI-generated" else 0,
+            'probability': prob,
+        })
+
+    results_df = pd.DataFrame(results)
+
+    precision = precision_score(results_df['true_label'], results_df['predicted_label'])
+    recall = recall_score(results_df['true_label'], results_df['predicted_label'])
+    f1 = f1_score(results_df['true_label'], results_df['predicted_label'])
+
+    # Confusion matrix
+    cm = confusion_matrix(results_df['true_label'], results_df['predicted_label'])
+    disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=["Human-written", "AI-generated"])
+    disp.plot(cmap=plt.cm.Blues)
+    plt.title("Confusion Matrix")
+    plt.show()
+
+    return precision, recall, f1
+
+precision, recall, f1 = calculate_metrics_with_confusion_matrix(df)
+
+# Output metrics
+print("Precision:", precision)
+print("Recall:", recall)
+print("F1 Score:", f1)
+
+"""TRAINING DATASET 120
+
+TESTING DATASET
+
+VALIDATION DATASET 40
+
+
+
+
+"""
