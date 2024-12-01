@@ -57,12 +57,12 @@ The `results.pdf` file is a direct copy of the output generated when running the
 
 The results highlight distinct differences in the model's performance between long and short texts:
 
-Short Texts (<50 Words):
+### Short Texts (<50 Words):
 - Low Accuracy: The model struggled to classify short texts due to lack of context and linguistic features.
 - High False Positives: Many human-written texts were misclassified as AI-generated, suggesting the model relied on superficial patterns and npt robust for short text analysis.
 - Challenges: Short texts provide fewer clues for the model to differentiate AI-generated content, leading to poor Precision and Recall.
 
-Long Texts (>200 Words):
+### Long Texts (>200 Words):
 - High Accuracy: Longer texts performed significantly better, with much higher detection accuracy and AUROC scores.
 - Low Misclassification: Richer context in long texts allowed the model to detect subtle inconsistencies in AI-generated content, reducing false positives and false negatives.
 - Strength: The structured and detailed nature of long texts provides the model with more reliable features for classification.
