@@ -76,6 +76,6 @@ The results highlight distinct differences in the model's performance between lo
 ```
 
 ## Acknowledgments
-The dataset and initial insights were sourced from {The Imitation Game: Detecting Human and AI-Generated Texts in the Era of ChatGPT and BARD](https://paperswithcode.com/paper/the-imitation-game-detecting-human-and-ai) by Kadhim Hayawi, Sakib Shahriar, and Sujith Samuel Mathew.
+The dataset and initial insights were sourced from [The Imitation Game: Detecting Human and AI-Generated Texts in the Era of ChatGPT and BARD](https://paperswithcode.com/paper/the-imitation-game-detecting-human-and-ai) by Kadhim Hayawi, Sakib Shahriar, and Sujith Samuel Mathew.
 
 
