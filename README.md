@@ -69,10 +69,10 @@ The results highlight distinct differences in the model's performance between lo
 
 ## Project Structure
 ```DS340W-AI-Text-Detection/
-├── 340detection.py        # Main Python script for running the analysis
-├── 340dataset.csv         # Dataset used for training, validation, and testing
-├── README.md              # Documentation for the project
-├── 340detection.results - Colab.pdf            # Copy of Output Generated
+├── 340detection.py                        # Main Python script for running the analysis
+├── 340dataset.csv                         # Dataset used for training, validation, and testing
+├── 340detection.results - Colab.pdf       # Copy of Output Generated
+├── README.md                              # Documentation for the project
 ```
 
 ## Acknowledgments
