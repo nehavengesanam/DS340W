@@ -50,10 +50,32 @@ Upload the `340dataset.csv` file to the Colab environment (using the file upload
 
 Run all the cells in the notebook.
 
-4. What the Code Does:
 
 ## Results
 
+The `results.pdf` file is a direct copy of the output generated when running the `DS340TESTING.py` script on Google Colab using a Jupyter Notebook. It contains the result metrics, including Precision, Recall, F1 Score, and the confusion matrix, as well as other relevant performance insights. The file demonstrates the execution of the code and the evaluation of the detection model on the `340dataset.csv` dataset.
+
+The results highlight distinct differences in the model's performance between long and short texts:
+
+Short Texts (<50 Words):
+- Low Accuracy: The model struggled to classify short texts due to lack of context and linguistic features.
+- High False Positives: Many human-written texts were misclassified as AI-generated, suggesting the model relied on superficial patterns and npt robust for short text analysis.
+- Challenges: Short texts provide fewer clues for the model to differentiate AI-generated content, leading to poor Precision and Recall.
+
+Long Texts (>200 Words):
+- High Accuracy: Longer texts performed significantly better, with much higher detection accuracy and AUROC scores.
+- Low Misclassification: Richer context in long texts allowed the model to detect subtle inconsistencies in AI-generated content, reducing false positives and false negatives.
+- Strength: The structured and detailed nature of long texts provides the model with more reliable features for classification.
+
+## Project Structure
+```DS340W-AI-Text-Detection/
+├── DS340TESTING.py        # Main Python script for running the analysis
+├── 340dataset.csv         # Dataset used for training, validation, and testing
+├── README.md              # Documentation for the project
+├── results.pdf            # Copy of Output Generated
+```
+
 ## Acknowledgments
+The dataset and initial insights were sourced from {The Imitation Game: Detecting Human and AI-Generated Texts in the Era of ChatGPT and BARD](https://paperswithcode.com/paper/the-imitation-game-detecting-human-and-ai) by Kadhim Hayawi, Sakib Shahriar, and Sujith Samuel Mathew.
 
 
